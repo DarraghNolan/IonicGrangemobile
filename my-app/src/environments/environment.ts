@@ -3,16 +3,16 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: true,
-  firebase:{
-    apiKey: "AIzaSyCwRgxX9JL5CW9jZ5qMKtBfbA-wGRk9Uoo",
-    authDomain: "collegedata-a75c1.firebaseapp.com",
-    projectId: "collegedata-a75c1",
-    storageBucket: "collegedata-a75c1.appspot.com",
-    messagingSenderId: "187523833312",
-    appId: "1:187523833312:web:f692d160479d717bff1f85",
-    measurementId: "G-4P8EB0M7NY"
-  }
+  firebase: {
+    projectId: 'grangemobile-b4eb5',
+    appId: '1:140150893451:web:61a2ae42c0e60b0123dd8e',
+    storageBucket: 'grangemobile-b4eb5.appspot.com',
+    apiKey: 'AIzaSyDvRv8bpVNOcFBEDJRratNFivcuaSWaBfo',
+    authDomain: 'grangemobile-b4eb5.firebaseapp.com',
+    messagingSenderId: '140150893451',
+    measurementId: 'G-612ST051B6',
+  },
+  production: false
 };
 
 /*

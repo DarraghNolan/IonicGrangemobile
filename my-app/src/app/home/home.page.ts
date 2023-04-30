@@ -16,5 +16,5 @@ export class HomePage {
     this.Announcements=data;
   })
   }
-
 }
+

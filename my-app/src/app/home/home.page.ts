@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
-import { FirebaseService } from '../services/firebase.service';
+import { Component, OnInit, NgZone } from '@angular/core';
+import { getApp } from '@angular/fire/app';
+
+import { AnnouncementInterface } from '../services/firebase.service';
+import { getFirestore, collection, addDoc, onSnapshot } from 'firebase/firestore';
 
 @Component({
   selector: 'app-home',
@@ -7,14 +10,27 @@ import { FirebaseService } from '../services/firebase.service';
   styleUrls: ['home.page.scss'],
 })
 
-export class HomePage {
-  Announcements: any = [];
+export class HomePage implements OnInit{
+  public Announcements: AnnouncementInterface[] = [];
+  constructor(private zone: NgZone) {}
 
-  constructor(private firebaseService: FirebaseService) {
+  ngOnInit(){
+    const firebaseApp = getApp();
+    const db = getFirestore(firebaseApp);
+    const announceCollection = collection(db, 'Announcement');
 
-  this.firebaseService.getEvents().subscribe((data)=>{
-    this.Announcements=data;
-  })
+    onSnapshot<AnnouncementInterface>(announceCollection, snapshot => {
+      this.zone.run(() => {
+        this.Announcements = snapshot.docs.map(d => d.data());
+      })
+    })
+  }
+
+  addAnnouncement(): void{
+    const firebaseApp = getApp();
+    const db = getFirestore(firebaseApp);
+
+    const annonceCollection = collection(db, 'Announcement');
+    addDoc(annonceCollection, this.createAnnouncementForm.value);
   }
 }
-

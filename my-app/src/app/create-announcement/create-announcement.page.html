@@ -1,0 +1,33 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>create-announcement</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">create-announcement</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-header>
+    <form [formGroup]="createAnnouncementForm" (submit)="addParty()" novalidate>
+      <ion-item>
+        <ion-label position="stacked">Announcement Title</ion-label>
+          <ion-input 
+          formControlName="title"
+          type="text" 
+          placeholder="Announcement Title"
+          >        
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Details</ion-label>
+        <ion-textarea formControlName="details"> </ion-textarea>
+      </ion-item>
+      
+      <ion-button expand="block" type="submit" fill="clear" shape="round">Save</ion-button>
+    </form>
+  </ion-header>
+</ion-content>

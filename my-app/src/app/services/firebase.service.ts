@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Firestore, collection, collectionData } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
-export interface Announcement {
+export interface AnnouncementInterface {
   id?: string;
   Announcement1:string;
   Announcement2:string;
@@ -16,9 +16,9 @@ export class FirebaseService {
   constructor(private firestore: Firestore) { 
   }
 
-    getEvents():Observable<Announcement[]> {
-      const eventRef= collection(this.firestore,'Announcement')
-      return collectionData(eventRef,{idField:'id'}) as Observable<Announcement[]>
+    getAnnouncements():Observable<AnnouncementInterface[]> {
+      const announcementRef= collection(this.firestore,'Announcement')
+      return collectionData(announcementRef,{idField:'id'}) as Observable<AnnouncementInterface[]>
     }
 
   }

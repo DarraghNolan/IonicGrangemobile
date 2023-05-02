@@ -23,31 +23,38 @@ export class CreateAnnouncementPage implements OnInit {
   }
 
   ngOnInit() {
-    this.announcementId = this.route.snapshot.params.id;
+    this.announcementId = this.route.snapshot.params['id'];
+    // console.log(id);
     if(this.announcementId !== 'new'){
-      const currentAnnouncement = doc(this.db, 'Announcment/${id}');
-      onSnapshot<AnnouncementInterface>(currentAnnouncement, snapshot => {
-        console.log(snapshot.data());
-        this.createAnnouncementForm.setValue({
-          title: snapshot.data().title,
-          details: snapshot.data().details,
-        })
-      })
-    }
-  }
+    const currentAnnouncement = doc(this.db, `Tasks/${this.announcementId}`);
 
-  addParty(): void{  
-    if(this.announcementId === 'new'){
-      const annonceCollection = collection(this.db, 'Announcement');
-  
-      addDoc(annonceCollection, this.createAnnouncementForm.value).then(() =>{
-        this.router.navigateByUrl('');
-      });
-    } else{
-      const announceDoc = doc(this.db, 'Announcment/${this.announcementId}');
-      setDoc(announceDoc, this.createAnnouncementForm.value).then(() =>{
-        this.router.navigateByUrl('');
-      });
-    }
+      onSnapshot(currentAnnouncement, snapshot => {  
+        const data = snapshot.data();
+        if (data) {
+        this.createAnnouncementForm.setValue({
+          title: data['Title'],
+          details: data['Date'],
+        });
+      }
+    })    
   }
+}
+
+  addAnnouncement(): void{
+    
+    if(this.announcementId ==='new'){
+      const announcementCollection = collection(this.db, 'Announcement');
+    
+      addDoc(announcementCollection, this.createAnnouncementForm.value).then(() => {
+        this.router.navigateByUrl('');
+      });
+      
+    
+    } else{
+      const announcementDoc = doc(this.db, `Announcement/${this.announcementId}`);
+      setDoc(announcementDoc, this.createAnnouncementForm.value).then(() => {
+        this.router.navigateByUrl('');
+      });
+    }     
+  }  
 }

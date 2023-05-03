@@ -15,7 +15,7 @@
       <ion-item>
         <ion-label position="stacked">Announcement Title</ion-label>
           <ion-input 
-          formControlName="title"
+          formControlName="Announcement1"
           type="text" 
           placeholder="Announcement Title"
           >        
@@ -24,10 +24,10 @@
 
       <ion-item>
         <ion-label position="stacked">Details</ion-label>
-        <ion-textarea formControlName="details"> </ion-textarea>
+        <ion-textarea formControlName="Announcement2"> </ion-textarea>
       </ion-item>
       
-      <ion-button expand="block" type="submit" fill="clear" shape="round">Save</ion-button>
+      <ion-button expand="block" type="submit" fill="clear" shape="round" routerLink="/home">Save</ion-button>
     </form>
   </ion-header>
 </ion-content>

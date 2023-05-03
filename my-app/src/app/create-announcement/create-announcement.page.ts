@@ -17,23 +17,22 @@ export class CreateAnnouncementPage implements OnInit {
   private announcementId= "null";
   constructor(public formBuilder: FormBuilder, private route: ActivatedRoute, private router: Router) { 
     this.createAnnouncementForm = this.formBuilder.group({
-      title: ['', Validators.compose([Validators.required])],
-      details: ['', Validators.compose([Validators.required])],
+      Announcement1: ['', Validators.compose([Validators.required])],
+      Announcement2: ['', Validators.compose([Validators.required])],
     });
   }
 
   ngOnInit() {
     this.announcementId = this.route.snapshot.params['id'];
-    // console.log(id);
     if(this.announcementId !== 'new'){
-    const currentAnnouncement = doc(this.db, `Tasks/${this.announcementId}`);
+    const currentAnnouncement = doc(this.db, `Announcement/${this.announcementId}`);
 
       onSnapshot(currentAnnouncement, snapshot => {  
         const data = snapshot.data();
         if (data) {
         this.createAnnouncementForm.setValue({
-          title: data['Title'],
-          details: data['Date'],
+          Title: data['Announcement1'],
+          Image: data['Announcement2'],
         });
       }
     })    

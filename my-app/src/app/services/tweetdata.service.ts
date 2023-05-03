@@ -7,10 +7,10 @@ import { HttpClient } from '@angular/common/http';
 export class TweetdataService {
 
   // Create url to timeline_response 
-  url = 'http://localhost:8200/php_twitter/timeline_response.php';
+  url = 'http://localhost:8100/php_twitter/timeline_response.php';
   
   // To run on device, use ip of server with MAMP on it.
-  //url = 'http://192.168.178.112:8200/php_twitter/timeline_response.php';
+  //url = 'http://192.168.178.112:8888/php_twitter/timeline_response.php';
 
   // Inject HttpClient module into Constructor
   constructor(private http: HttpClient) { }

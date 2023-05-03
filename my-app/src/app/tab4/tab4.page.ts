@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import { ModuleDataService } from '../services/moduledata.service';
 import { Router } from '@angular/router';
@@ -8,6 +8,8 @@ import { Module } from './modules';
 import { ModalController, NavParams } from '@ionic/angular';
 import { AddModulePage } from '../addmodule/addmodule.page';
 
+import * as L from "leaflet";
+
 @Component({
   selector: 'app-tab4',
   templateUrl: 'tab4.page.html',
@@ -15,10 +17,15 @@ import { AddModulePage } from '../addmodule/addmodule.page';
 })
 export class Tab4Page implements OnInit{
 
+  map?: L.Map
+
   modules: any;
   newModules: any;
 
-  constructor(private moduledataservice: ModuleDataService, private router: Router, private modalCtrl: ModalController) {}
+  constructor(
+    private moduledataservice: ModuleDataService, 
+    private router: Router, 
+    private modalCtrl: ModalController) {}
 
   getModuleData(){
     // Get the information from the API using Observable
@@ -57,7 +64,29 @@ export class Tab4Page implements OnInit{
   }
 
   ngOnInit() {
-    this.getModuleData();
+    // this.getModuleData();
+    // this.map = L.map('map', {
+    //   center: [25.3791924,55.4765436],
+    //   zoom: 15,
+    //   renderer: L.canvas()
+    // })    
+
+    
+
+  }
+
+  ionViewDidEnter(){ this.leafletMap(); }
+
+  leafletMap(){
+    this.map=L.map('mapId').setView([28.644800, 77.216721], 5);
+    
+    L.tileLayer('https://{s},title.openstreetmap.org/{z}/{x}/{y}.png', {
+        
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(this.map);
+
+    L.marker([28.6, 77]).addTo(this.map).bindPopup('Delhi').openPopup();
+    L.marker([34, 77]).addTo(this.map).bindPopup('Leh').openPopup();
   }
 
   // changeDisplay() {

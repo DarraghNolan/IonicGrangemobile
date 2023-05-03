@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AnnouncementInterface } from '../services/firebase.service';
 import { getApp } from '@angular/fire/app';
-import { addDoc, collection, getFirestore, onSnapshot, doc, setDoc } from 'firebase/firestore';
+import { addDoc, collection, getFirestore, onSnapshot, doc, setDoc, deleteDoc } from 'firebase/firestore';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
+import { async } from '@angular/core/testing';
 
 @Component({
   selector: 'app-create-announcement',
@@ -14,8 +16,8 @@ export class CreateAnnouncementPage implements OnInit {
   public createAnnouncementForm: FormGroup;  
   private firebaseApp = getApp();
   private db = getFirestore(this.firebaseApp);
-  private announcementId= "null";
-  constructor(public formBuilder: FormBuilder, private route: ActivatedRoute, private router: Router) { 
+  public announcementId= "null";
+  constructor(public formBuilder: FormBuilder, private route: ActivatedRoute, private router: Router, private alertController: AlertController) { 
     this.createAnnouncementForm = this.formBuilder.group({
       Announcement1: ['', Validators.compose([Validators.required])],
       Announcement2: ['', Validators.compose([Validators.required])],
@@ -57,7 +59,23 @@ export class CreateAnnouncementPage implements OnInit {
     }     
   }
 
-  backButton(){
-    this.router.navigateByUrl('');
+  async deleteAnnouncement(announcementId:string): Promise<void>{
+    const alert = await this.alertController.create({
+      header: 'Confirm Delete',
+      message: 'Are you sure you to delete this announcement?',
+      buttons:[{
+        text: 'Cancel',
+        role: 'cancel',
+      },
+      {
+        text: 'Delete',
+        handler: () => {          
+          const AnnouncementToDelete = doc(this.db, `Announcement/${announcementId}`);
+          deleteDoc(AnnouncementToDelete).then(() =>{
+            this.router.navigateByUrl('');      
+          });
+        }
+      }]
+    });
   }
 }

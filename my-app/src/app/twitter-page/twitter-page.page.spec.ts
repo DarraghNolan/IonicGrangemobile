@@ -1,4 +1,5 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, async } from '@angular/core/testing';
+import { IonicModule } from '@ionic/angular';
 import { TwitterPagePage } from './twitter-page.page';
 
 describe('TwitterPagePage', () => {
@@ -6,6 +7,11 @@ describe('TwitterPagePage', () => {
   let fixture: ComponentFixture<TwitterPagePage>;
 
   beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      declarations: [ TwitterPagePage ],
+      imports: [IonicModule.forRoot()]
+    }).compileComponents();
+
     fixture = TestBed.createComponent(TwitterPagePage);
     component = fixture.componentInstance;
     fixture.detectChanges();

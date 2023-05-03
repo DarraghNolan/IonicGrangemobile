@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { TweetdataService } from '../services/tweetdata.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
+  selector: 'app-twitter-page',
+  templateUrl: 'twitter-page.page.html',
+  styleUrls: ['twitter-page.page.scss'],
 })
-export class HomePage{
+export class TwitterPagePage{
 
   tweets: any;
 
@@ -16,7 +16,7 @@ export class HomePage{
     // Subscribe to tweetdata service getTwitterTimeline()
     this.tweetdataservice.getTwitterTimeline().subscribe(result => {
       // Pass results to tweets variable
-      this.tweets = result['tweets'];
+      //this.tweets = result['tweets'];
     });
 
 

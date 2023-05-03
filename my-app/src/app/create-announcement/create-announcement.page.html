@@ -9,6 +9,13 @@
     <ion-toolbar>
       <ion-title size="large">create-announcement</ion-title>
     </ion-toolbar>
+    <ion-item>
+      <ion-button>
+        <ion-nav-link  onclick="backButton()">
+          Back
+        </ion-nav-link>        
+      </ion-button>
+    </ion-item>
   </ion-header>
   <ion-header>
     <form [formGroup]="createAnnouncementForm" (submit)="addAnnouncement()" novalidate>

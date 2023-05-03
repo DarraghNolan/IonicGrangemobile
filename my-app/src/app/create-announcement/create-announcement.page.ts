@@ -55,5 +55,9 @@ export class CreateAnnouncementPage implements OnInit {
         this.router.navigateByUrl('');
       });
     }     
-  }  
+  }
+
+  backButton(){
+    this.router.navigateByUrl('');
+  }
 }

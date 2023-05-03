@@ -31,7 +31,11 @@ const routes: Routes = [
   {
     path: 'create-announcement/:id',
     loadChildren: () => import('./create-announcement/create-announcement.module').then( m => m.CreateAnnouncementPageModule)
+  },  {
+    path: 'twitter-page',
+    loadChildren: () => import('./twitter-page/twitter-page.module').then( m => m.TwitterPagePageModule)
   }
+
 
 ];
 

@@ -16,7 +16,6 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
 // import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 
-
 import { HttpClientModule} from '@angular/common/http';
 
 // These Modules had to be added here and to the imports array to ensure that the Model would work for adding
@@ -31,9 +30,9 @@ import { AddModulePageModule } from '../app/addmodule/addmodule.module';
     provideFirebaseApp(() => initializeApp(environment.firebase)), provideAuth(() => getAuth()), provideFirestore(() => getFirestore()), provideStorage(() => getStorage())
     // , AngularFireModule.initializeApp(environment.firebase), AngularFirestoreModule
   ],
-  providers: [
-    
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
-  bootstrap: [AppComponent],
+  providers: 
+  [{ 
+    provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+    bootstrap: [AppComponent],
 })
 export class AppModule {}

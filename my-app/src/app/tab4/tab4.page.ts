@@ -64,12 +64,12 @@ export class Tab4Page implements OnInit{
   }
 
   ngOnInit() {
-    // this.getModuleData();
-    // this.map = L.map('map', {
-    //   center: [25.3791924,55.4765436],
-    //   zoom: 15,
-    //   renderer: L.canvas()
-    // })    
+    this.getModuleData();
+    this.map = L.map('map', {
+      center: [53.351320,-6.279700],
+      zoom: 15,
+      renderer: L.canvas()
+    })    
 
     
 
@@ -78,15 +78,14 @@ export class Tab4Page implements OnInit{
   ionViewDidEnter(){ this.leafletMap(); }
 
   leafletMap(){
-    this.map=L.map('mapId').setView([28.644800, 77.216721], 5);
+    this.map=L.map('mapId').setView([53.351320, -6.279700], 20);
     
-    L.tileLayer('https://{s},title.openstreetmap.org/{z}/{x}/{y}.png', {
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(this.map);
 
-    L.marker([28.6, 77]).addTo(this.map).bindPopup('Delhi').openPopup();
-    L.marker([34, 77]).addTo(this.map).bindPopup('Leh').openPopup();
+    L.marker([53.351320, -6.279700]).addTo(this.map).bindPopup('TU Dublin').openPopup();
   }
 
   // changeDisplay() {

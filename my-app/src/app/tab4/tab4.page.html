@@ -9,10 +9,12 @@
       <ion-title size="large">Tab 4</ion-title>
     </ion-toolbar>
   </ion-header>
-  <div id="mapId"></div>
   <ion-list>
     <ion-item *ngFor='let module of newModules'>
       {{module.moduleName}}
+      <ion-item id="module-details">
+        {{module.moduleNo}} {{module.website}} {{module.location}} {{module.room}} {{module.dueDate}} {{module.credits}} {{module.lat}} {{module.long}}
+      </ion-item>
       <ion-button slot="end">More</ion-button>      
       <ion-item style="display:none"  id="module-details">
         {{module.moduleNo}} {{module.website}} {{module.location}} {{module.room}} {{module.dueDate}} {{module.credits}} {{module.lat}} {{module.long}}

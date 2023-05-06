@@ -3,6 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
+  API_KEY: '656000c9a79742ec96de3006c3254b20',
+  API_URL: 'https://newsapi.org/v2',
   firebase: {
     projectId: 'grangemobile-b4eb5',
     appId: '1:140150893451:web:61a2ae42c0e60b0123dd8e',

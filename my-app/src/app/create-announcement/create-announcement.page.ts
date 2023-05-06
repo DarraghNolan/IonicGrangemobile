@@ -48,8 +48,7 @@ export class CreateAnnouncementPage implements OnInit {
     
       addDoc(announcementCollection, this.createAnnouncementForm.value).then(() => {
         this.router.navigateByUrl('');
-      });
-      
+      });      
     
     } else{
       const announcementDoc = doc(this.db, `Announcement/${this.announcementId}`);
@@ -77,5 +76,7 @@ export class CreateAnnouncementPage implements OnInit {
         }
       }]
     });
+
+    await alert.present();
   }
 }

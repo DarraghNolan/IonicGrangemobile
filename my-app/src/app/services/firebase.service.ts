@@ -21,4 +21,4 @@ export class FirebaseService {
       return collectionData(announcementRef,{idField:'id'}) as Observable<AnnouncementInterface[]>
     }
 
-  }
+}

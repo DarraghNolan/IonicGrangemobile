@@ -4,15 +4,27 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-card *ngFor="let Announcement of Announcements">
+<ion-content [fullscreen]="true">
+  <ion-card 
+    *ngFor="let Announcement of Announcements"
+    routerLink="/create-announcement/{{Announcement.id}}"
+  >
     <ion-card-header>
       <ion-card-title>{{Announcement.Announcement1}}</ion-card-title>
     </ion-card-header>
     <img alt="placeholder" style=" width: 100%; height: 200px;" src="{{Announcement.Announcement2}}" />
-    <ion-button>Delete</ion-button>
+  </ion-card>
+
+  <ion-card *ngFor="let article of articles">
+    <ion-img [src]="article.urlToImage"></ion-img>
+      <ion-card-header>
+        <ion-card-subtitle>{{article.publishedAt | date}}</ion-card-subtitle>
+        <ion-card-title>{{article.title}}</ion-card-title>
+      </ion-card-header>
+    <ion-card-content>{{article.description}}</ion-card-content>
   </ion-card>
   <ion-fab slot="fixed" horizontal="end" vertical="bottom">
-  <ion-fab-button routerLink="/create-announcement/new">+</ion-fab-button>
-</ion-fab>
+    <ion-fab-button routerLink="/create-announcement/new">+</ion-fab-button>
+  </ion-fab>
+
 </ion-content>

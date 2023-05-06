@@ -28,4 +28,11 @@
       <ion-button expand="block" type="submit" fill="clear" shape="round" routerLink="/home">Save</ion-button>
     </form>
   </ion-header>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="danger" (click)="deleteAnnouncement(announcementId)">
+      <ion-icon name="remove"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
 </ion-content>

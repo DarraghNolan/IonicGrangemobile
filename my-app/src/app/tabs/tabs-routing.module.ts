@@ -24,10 +24,6 @@ const routes: Routes = [
         loadChildren: () => import('../tab4/tab4.module').then(m => m.Tab4PageModule)
       },
       {
-        path: 'twitter-page',
-        loadChildren: () => import('../twitter-page/twitter.module').then(m => m.TwitterPagePageModule)
-      },
-      {
         path: '',
         redirectTo: '/tabs/tab1',
         pathMatch: 'full'

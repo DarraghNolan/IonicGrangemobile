@@ -1,24 +1,24 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Misc</ion-title>
+    <ion-title>Modules</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 4</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  <ion-list>
-    <ion-item *ngFor='let module of newModules' id="module-details">
-      <ion-list>
-        {{module.moduleName}}
-      </ion-list>
-      <ion-list>
-        {{module.moduleNo}} {{module.website}} {{module.location}} {{module.room}} {{module.dueDate}} {{module.credits}} {{module.lat}} {{module.long}}
-      </ion-list>      
-    </ion-item>
-  </ion-list>
+<ion-content>
+  <div class="ion-padding" id="mapId" slot="content">Map</div>
+  <ion-accordion-group>
+    <ion-accordion *ngFor='let module of newModules' id="module-details">
+      <ion-item slot="header" color="light">
+        <ion-label>{{module.moduleName}}</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">Module Number: {{module.moduleNo}}</div>
+      <div class="ion-padding" slot="content">Module Website: {{module.website}}</div>
+      <div class="ion-padding" slot="content">Class Location: {{module.location}}</div>
+      <div class="ion-padding" slot="content">Class Room: {{module.room}}</div>
+      <div class="ion-padding" slot="content">Assingment Due Date: {{module.dueDate}}</div>
+      <div class="ion-padding" slot="content">Module Credits: {{module.credits}}</div>
+      <div class="ion-padding" slot="content">GPS Coordinates: {{module.long}}, {{module.lat}}</div>
+    </ion-accordion>
+  </ion-accordion-group>
   <ion-fab name="add-circle-sharp" slot="fixed" horizontal="start" vertical="bottom">
     <ion-fab-button (click)="addModule()" style="font-size: xx-large;">+</ion-fab-button>
   </ion-fab>

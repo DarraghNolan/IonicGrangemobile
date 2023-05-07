@@ -1,10 +1,9 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Announcements</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Announcements</ion-title>
+    </ion-toolbar>
+  </ion-header>
   <ion-card 
     *ngFor="let Announcement of Announcements"
     routerLink="/create-announcement/{{Announcement.id}}"
@@ -14,6 +13,12 @@
     </ion-card-header>
     <img alt="placeholder" style=" width: 100%; height: 200px;" src="{{Announcement.Announcement2}}" />
   </ion-card>
+  
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>News</ion-title>
+    </ion-toolbar>
+  </ion-header>
 
   <ion-card *ngFor="let article of articles">
     <ion-img [src]="article.urlToImage"></ion-img>

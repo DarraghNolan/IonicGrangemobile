@@ -21,6 +21,8 @@ export class Tab4Page implements OnInit{
 
   modules: any;
   newModules: any;
+  LongVal: number = 0;
+  LatVal: number = 0;
 
   constructor(
     private moduledataservice: ModuleDataService, 
@@ -33,6 +35,8 @@ export class Tab4Page implements OnInit{
     this.moduledataservice.getData().subscribe(result => {
       this.modules = result;
       this.newModules = this.modules.modules;
+      this.LongVal = this.modules.long;
+      this.LatVal = this.modules.lat;
      });
   }
 
@@ -78,14 +82,16 @@ export class Tab4Page implements OnInit{
   ionViewDidEnter(){ this.leafletMap(); }
 
   leafletMap(){
-    this.map=L.map('mapId').setView([53.351320, -6.279700], 20);
+    this.map = L.map('mapId').setView([53.351320, -6.279700], 20);
     
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(this.map);
 
-    L.marker([53.351320, -6.279700]).addTo(this.map).bindPopup('TU Dublin').openPopup();
+    
+    // L.marker([this.LongVal, this.LatVal]).addTo(this.map).bindPopup('TU Dublin').openPopup();
+    L.marker([this.LongVal, this.LatVal]).addTo(this.map).bindPopup('TU Dublin').openPopup();
   }
 
   // changeDisplay() {

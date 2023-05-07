@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, AfterViewInit } from '@angular/core';
 
 import { ModuleDataService } from '../services/moduledata.service';
 import { Router } from '@angular/router';
@@ -15,7 +15,7 @@ import * as L from "leaflet";
   templateUrl: 'tab4.page.html',
   styleUrls: ['tab4.page.scss']
 })
-export class Tab4Page implements OnInit{
+export class Tab4Page implements OnInit, AfterViewInit{
 
   map?: L.Map
 
@@ -65,23 +65,22 @@ export class Tab4Page implements OnInit{
 
     });
     return await modal.present();
+  }  
+
+  ngAfterViewInit(){
+    const map = L.map('mapId').setView([this.module.long, this.module.lat], 13);
   }
 
   ngOnInit() {
     this.getModuleData();
-    this.map = L.map('map', {
+    this.map = L.map('mapId', {
       center: [53.351320,-6.279700],
       zoom: 15,
       renderer: L.canvas()
-    })    
-
-    
-
+    })
   }
 
-  ionViewDidEnter(){ this.leafletMap(); }
-
-  leafletMap(){
+  ionViewDidEnter(){ 
     this.map = L.map('mapId').setView([53.351320, -6.279700], 20);
     
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -89,9 +88,7 @@ export class Tab4Page implements OnInit{
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(this.map);
 
-    
-    // L.marker([this.LongVal, this.LatVal]).addTo(this.map).bindPopup('TU Dublin').openPopup();
-    L.marker([this.LongVal, this.LatVal]).addTo(this.map).bindPopup('TU Dublin').openPopup();
+    L.marker([53.351320, -6.279700]).addTo(this.map).bindPopup('TU Dublin').openPopup();
   }
 
   // changeDisplay() {

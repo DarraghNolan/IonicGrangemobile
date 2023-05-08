@@ -5,6 +5,10 @@
 export const environment = {
   API_KEY: '656000c9a79742ec96de3006c3254b20',
   API_URL: 'https://newsapi.org/v2',
+
+  Weather_API_KEY: '56b6ddd654c49febe377e9b65a822379',
+  Weather_API_URL: 'https://api.openweathermap.org/data/2.5/',
+
   firebase: {
     projectId: 'grangemobile-b4eb5',
     appId: '1:140150893451:web:61a2ae42c0e60b0123dd8e',

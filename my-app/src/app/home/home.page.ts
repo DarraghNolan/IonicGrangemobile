@@ -5,6 +5,11 @@ import { AnnouncementInterface, FirebaseService } from '../services/firebase.ser
 import { getFirestore, collection, addDoc, onSnapshot } from 'firebase/firestore';
 
 import { NewsFeedsService } from '../services/news-feeds.service';
+import { environment } from 'src/environments/environment';
+import { HttpClient } from '@angular/common/http';
+
+const weather_API_URL = environment.Weather_API_URL;
+const weather_API_KEY = environment.Weather_API_KEY;
 
 @Component({
   selector: 'app-home',
@@ -16,13 +21,21 @@ export class HomePage implements OnInit{
   
   Announcements: any = [];
   articles: any
+  weatherTemps: any
 
-  constructor(private firebaseService: FirebaseService, private zone: NgZone, private newsService:NewsFeedsService) {
+  constructor(
+    private firebaseService: FirebaseService, 
+    private zone: NgZone, 
+    private newsService:NewsFeedsService, 
+    public httpClient:HttpClient) 
+    {
+
     this.firebaseService.getAnnouncements().subscribe((data)=>{
       this.Announcements=data;
     })
 
     this.loadNews()
+    this.loadWeatherData()
   }
 
   ngOnInit(){
@@ -46,6 +59,14 @@ export class HomePage implements OnInit{
       this.articles = news['articles'];
       console.log(this.articles);
 
+    })
+  }
+
+  loadWeatherData(){
+    // this.httpClient.get(`${weather_API_URL}/onecall?lat=${53.3546668}&lon=${-6.279672}&appid=${weather_API_KEY}`).subscribe( (results: any) => {
+    this.httpClient.get(`${weather_API_URL}/weather?lat=${53.3546668}&lon=${-6.279672}&appid=${weather_API_KEY}`).subscribe( (results: any) => {
+      this.weatherTemps = results['main']
+      console.log(this.weatherTemps);
     })
   }
 }

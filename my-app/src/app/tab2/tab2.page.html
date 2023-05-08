@@ -5,10 +5,16 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-list>
-    <ion-item *ngFor='let lecturer of newLecturers'>
-      {{lecturer.firstName}} {{lecturer.lastName}}
-    </ion-item>
-  </ion-list>
+  <ion-accordion-group>
+    <ion-accordion *ngFor='let lecturer of newLecturers'>
+      <ion-item slot="header" color="light">
+        <ion-label>{{lecturer.firstName}} {{lecturer.lastName}}</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">Staff Number: {{lecturer.staffNo}}</div>
+    </ion-accordion>
+  </ion-accordion-group>
+  <ion-fab name="add-circle-sharp" slot="fixed" horizontal="start" vertical="bottom">
+    <ion-fab-button (click)="addLecture()" style="font-size: xx-large;">+</ion-fab-button>
+  </ion-fab>
 </ion-content>
 

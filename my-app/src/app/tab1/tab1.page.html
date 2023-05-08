@@ -5,11 +5,14 @@
 </ion-header>
 <!-- Include fullscreen=false or last item on <ion-list> will be hidden!! -->
 <ion-content [fullscreen]="false">
-  <ion-list>
-    <ion-item *ngFor='let student of newStudents'>
-      {{student.firstName}} {{student.lastName}}
-    </ion-item>
-  </ion-list>
+  <ion-accordion-group>
+    <ion-accordion *ngFor='let student of newStudents'>
+      <ion-item slot="header" color="light">
+        <ion-label>{{student.firstName}} {{student.lastName}}</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">Student ID: {{student.studentID}}</div>
+    </ion-accordion>
+  </ion-accordion-group>
   <ion-fab name="add-circle-sharp" slot="fixed" horizontal="start" vertical="bottom">
     <ion-fab-button (click)="addStudent()" style="font-size: xx-large;">+</ion-fab-button>
   </ion-fab>

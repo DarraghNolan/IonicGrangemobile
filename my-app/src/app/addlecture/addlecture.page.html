@@ -1,0 +1,12 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>New Lecturer</ion-title>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="" (click)="dismiss(false)"></ion-back-button>
+      </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-input type="text" [(ngModel)]="newLecture.staffNumber" placeholder="Staff Number"></ion-input>
+  <ion-button (click)="addLecture()" expand='block'>Add Lecturer</ion-button>
+</ion-content>

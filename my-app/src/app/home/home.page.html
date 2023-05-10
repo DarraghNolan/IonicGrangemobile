@@ -34,12 +34,17 @@
 
   <ion-header>
     <ion-toolbar>
-      <ion-title>Weather</ion-title>
+      <ion-title>Today's Weather</ion-title>
     </ion-toolbar>
   </ion-header>
 
   <ion-card>
-    <ion-card-header>{{weatherTemps.temp}}</ion-card-header>
+    <ion-card-header>
+      <ion-card-subtitle>{{todayDate | date: "EEE dd MMM"}}</ion-card-subtitle>
+      <ion-card-title>{{(weatherTemps.temp - 273.15).toFixed(0)}}° Celcius</ion-card-title>
+      <ion-icon slot="start" name="location"></ion-icon>
+      <span>{{cityName}}</span>
+    </ion-card-header>
   </ion-card>
 
   <ion-fab slot="fixed" horizontal="end" vertical="bottom">

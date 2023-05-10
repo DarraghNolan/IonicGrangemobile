@@ -10,7 +10,9 @@
       <ion-item slot="header" color="light">
         <ion-label>{{lecturer.firstName}} {{lecturer.lastName}}</ion-label>
       </ion-item>
-      <div class="ion-padding" slot="content">Staff Number: {{lecturer.staffNo}}</div>
+      <div class="ion-padding" slot="content">Staff Number: {{lecturer.staffNumber}}</div>      
+      <div class="ion-padding" slot="content">Module Codes: {{lecturer.moduleNo1}}, {{lecturer.moduleNo2}}</div>
+      <div class="ion-padding" slot="content">Email: {{lecturer.email}}</div>
     </ion-accordion>
   </ion-accordion-group>
   <ion-fab name="add-circle-sharp" slot="fixed" horizontal="start" vertical="bottom">

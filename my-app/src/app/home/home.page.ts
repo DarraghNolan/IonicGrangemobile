@@ -22,6 +22,8 @@ export class HomePage implements OnInit{
   Announcements: any = [];
   articles: any
   weatherTemps: any
+  todayDate = new Date()
+  cityName: any
 
   constructor(
     private firebaseService: FirebaseService, 
@@ -66,6 +68,7 @@ export class HomePage implements OnInit{
     // this.httpClient.get(`${weather_API_URL}/onecall?lat=${53.3546668}&lon=${-6.279672}&appid=${weather_API_KEY}`).subscribe( (results: any) => {
     this.httpClient.get(`${weather_API_URL}/weather?lat=${53.3546668}&lon=${-6.279672}&appid=${weather_API_KEY}`).subscribe( (results: any) => {
       this.weatherTemps = results['main']
+      this.cityName = results['name']
       console.log(this.weatherTemps);
     })
   }

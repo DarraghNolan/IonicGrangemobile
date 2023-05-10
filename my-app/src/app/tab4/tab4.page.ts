@@ -68,23 +68,22 @@ export class Tab4Page implements OnInit, AfterViewInit{
   }  
 
   ngAfterViewInit(){
-    this.map = L.map('mapId').setView([this.modules.long, this.modules.lat], 20);
-    
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        
-    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-    }).addTo(this.map);
+    this.map = L.map('mapId').setView([53.351320, -6.279700], 20);
 
-    L.marker([this.modules.long, this.modules.lat]).addTo(this.map).bindPopup('TU Dublin').openPopup();
+    L.marker([53.351320, -6.279700]).addTo(this.map).bindPopup('TU Dublin').openPopup();
   }
 
   ngOnInit() {
     this.getModuleData();
     this.map = L.map('mapId', {
-      center: [this.modules.long, this.modules.lat],
+      center: [53.351320, -6.279700],
       zoom: 15,
       renderer: L.canvas()
     })
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {        
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(this.map);
   }
 
   // ionViewDidEnter(){ 

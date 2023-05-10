@@ -6,7 +6,12 @@
       </ion-buttons>
   </ion-toolbar>
 </ion-header>
-<ion-content>
+<ion-content>  
   <ion-input type="text" [(ngModel)]="newLecture.staffNumber" placeholder="Staff Number"></ion-input>
+  <ion-input type="text" [(ngModel)]="newLecture.firstName" placeholder="First Name"></ion-input>
+  <ion-input type="text" [(ngModel)]="newLecture.lastName" placeholder="Last Name"></ion-input>
+  <ion-input type="text" [(ngModel)]="newLecture.moduleNo1" placeholder="First Module Number"></ion-input>
+  <ion-input type="text" [(ngModel)]="newLecture.moduleNo2" placeholder="Second Module Number"></ion-input>
+  <ion-input type="text" [(ngModel)]="newLecture.email" placeholder="Email Address"></ion-input>
   <ion-button (click)="addLecture()" expand='block'>Add Lecturer</ion-button>
 </ion-content>

@@ -6,7 +6,8 @@
 <ion-content>
   <ion-fab name="add-circle-sharp" slot="fixed" horizontal="start" vertical="top">
     <ion-fab-button (click)="addModule()" style="font-size: xx-large;">+</ion-fab-button>
-  </ion-fab>
+  </ion-fab>  
+  <div class="ion-padding" id="mapId">Map</div>
   <ion-accordion-group>
     <ion-accordion *ngFor='let module of newModules'>
       <ion-item slot="header" color="light">
@@ -19,7 +20,6 @@
       <div class="ion-padding" slot="content">Assingment Due Date: {{module.dueDate}}</div>
       <div class="ion-padding" slot="content">Module Credits: {{module.credits}}</div>
       <div class="ion-padding" slot="content">GPS Coordinates: {{module.long}}, {{module.lat}}</div>
-      <div class="ion-padding" slot="content" id="mapId">Map</div>
     </ion-accordion>
   </ion-accordion-group>
 </ion-content>

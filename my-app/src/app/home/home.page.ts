@@ -60,7 +60,6 @@ export class HomePage implements OnInit{
     this.newsService.getNews("everything?q=TU-Dublin&language=en&sortBy=relevancy&sources=the-irish-times").subscribe( (news: any) => {
       this.articles = news['articles'];
       console.log(this.articles);
-
     })
   }
 

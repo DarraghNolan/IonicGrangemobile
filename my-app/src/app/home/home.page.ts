@@ -64,7 +64,6 @@ export class HomePage implements OnInit{
   }
 
   loadWeatherData(){
-    // this.httpClient.get(`${weather_API_URL}/onecall?lat=${53.3546668}&lon=${-6.279672}&appid=${weather_API_KEY}`).subscribe( (results: any) => {
     this.httpClient.get(`${weather_API_URL}/weather?lat=${53.3546668}&lon=${-6.279672}&appid=${weather_API_KEY}`).subscribe( (results: any) => {
       this.weatherTemps = results['main']
       this.cityName = results['name']

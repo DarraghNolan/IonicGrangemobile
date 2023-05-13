@@ -15,7 +15,7 @@ import * as L from "leaflet";
   templateUrl: 'tab4.page.html',
   styleUrls: ['tab4.page.scss']
 })
-export class Tab4Page implements OnInit, AfterViewInit{
+export class Tab4Page implements OnInit{
 
   map?: L.Map
 
@@ -26,7 +26,7 @@ export class Tab4Page implements OnInit, AfterViewInit{
 
   constructor(
     private moduledataservice: ModuleDataService, 
-    private router: Router, 
+    private router: Router,
     private modalCtrl: ModalController) {}
 
   getModuleData(){
@@ -67,11 +67,11 @@ export class Tab4Page implements OnInit, AfterViewInit{
     return await modal.present();
   }  
 
-  ngAfterViewInit(){
-    this.map = L.map('mapId').setView([53.351320, -6.279700], 20);
+  // ngAfterViewInit(){
+  //   this.map = L.map('mapId').setView([53.351320, -6.279700], 20);
 
-    L.marker([53.351320, -6.279700]).addTo(this.map).bindPopup('TU Dublin').openPopup();
-  }
+  //   L.marker([53.351320, -6.279700]).addTo(this.map).bindPopup('TU Dublin').openPopup();
+  // }
 
   ngOnInit() {
     this.getModuleData();
@@ -80,6 +80,7 @@ export class Tab4Page implements OnInit, AfterViewInit{
       zoom: 15,
       renderer: L.canvas()
     })
+    L.marker([53.351320, -6.279700]).addTo(this.map).bindPopup('TU Dublin').openPopup();
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {        
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
